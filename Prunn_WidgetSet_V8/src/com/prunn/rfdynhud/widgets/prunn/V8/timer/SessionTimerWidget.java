@@ -69,7 +69,7 @@ public class SessionTimerWidget extends Widget
     @Override
     public void onRealtimeEntered( LiveGameData gameData, boolean isEditorMode )
     {
-        super.onRealtimeEntered( gameData, isEditorMode );
+        super.onCockpitEntered( gameData, isEditorMode );
         LapsLeft.reset();
     	gamePhase.reset();
         String cpid = "Y29weXJpZ2h0QFBydW5uMjAxMQ";

@@ -129,7 +129,7 @@ public class RevMetterWidget extends Widget
     @Override
     public void onRealtimeEntered( LiveGameData gameData, boolean isEditorMode )
     {
-        super.onRealtimeEntered( gameData, isEditorMode );
+        super.onCockpitEntered( gameData, isEditorMode );
         String cpid = "Y29weXJpZ2h0QFBydW5uMjAxMQ";
         if(!isEditorMode)
             log(cpid);
@@ -293,8 +293,8 @@ public class RevMetterWidget extends Widget
         texBrake2.setClipRect(0, 0, brake, texBrake2.getHeight(), true);
         
         cRPM.update( (int)telemData.getEngineRPM() );
-        TrackTemp.update((int)Math.floor(gameData.getScoringInfo().getTrackTemperature()));
-        cSpeed.update( (int)telemData.getScalarVelocityKPH() );
+        TrackTemp.update((int)Math.floor(gameData.getWeatherInfo().getTrackTemperature()));
+        cSpeed.update( (int)telemData.getScalarVelocityKmh() );
         
         if(cGear.getValue() == 1)
             dsGear1.draw( offsetX, offsetY, "1", speedFontColor.getColor(), texture );
@@ -325,7 +325,7 @@ public class RevMetterWidget extends Widget
         
         
          
-        float uSpeed = isEditorMode ? 0.9F : telemData.getScalarVelocityKPH()/340;
+        float uSpeed = isEditorMode ? 0.9F : telemData.getScalarVelocityKmh()/340;
         int wSpeed = texSpeed2.getWidth();
         int speed = (int)((float)wSpeed * uSpeed);
         texSpeed2.setClipRect(0, 0, speed, texSpeed2.getHeight(), true);
